@@ -1105,7 +1105,7 @@ ABOUT SECTION
     
     .projectSwiper{
     
-    padding-bottom:70px;
+    padding-bottom:0px;
     
     }
     
@@ -1804,6 +1804,21 @@ CONTACT SECTION
 Mobile Menu
 ===========================*/
 
+.menu-btn.active i{
+
+    transform:rotate(90deg);
+    
+    }
+    
+    .menu-btn.active i::before{
+    
+    content:"\f00d";
+    
+    font-family:"Font Awesome 6 Free";
+    
+    font-weight:900;
+    
+    }
 .menu-btn{
 
     display:none;
@@ -1926,7 +1941,35 @@ Mobile Menu
 
         .hero{
 
-            animation:zoomHero 18s linear infinite;
+            overflow:hidden;
+            
+            }
+            
+            .hero::before{
+            
+            top:0;
+            
+            left:0;
+            
+            right:0;
+            
+            bottom:0;
+            
+            position:absolute;
+            
+            content:"";
+            
+            }
+
+        .hero{
+
+            background-size:cover;
+            
+            background-position:center;
+            
+            background-repeat:no-repeat;
+            
+            transition:background-image 1s ease;
             
             }
             

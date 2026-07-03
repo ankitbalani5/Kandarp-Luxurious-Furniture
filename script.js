@@ -360,12 +360,80 @@ topBtn.onclick = () => {
 // Mobile Menu
 // ===========================
 
-const menuBtn=document.querySelector(".menu-btn");
+const menu = document.getElementById("menu");
+const menuBtn = document.querySelector(".menu-btn");
 
-const menu=document.getElementById("menu");
+menuBtn.addEventListener("click", function (e) {
 
-menuBtn.onclick=()=>{
+    e.stopPropagation();
 
-menu.classList.toggle("active");
+    menu.classList.toggle("active");
 
-}
+    menuBtn.classList.toggle("active");
+
+    if(menu.classList.contains("active")){
+        document.body.style.overflow="hidden";
+    }else{
+        document.body.style.overflow="auto";
+    }
+
+});
+
+// Close when clicking menu links
+document.querySelectorAll("#menu a").forEach(link=>{
+
+    link.addEventListener("click",()=>{
+
+        menu.classList.remove("active");
+
+        menuBtn.classList.remove("active");
+
+        document.body.style.overflow="auto";
+
+    });
+
+});
+
+// Close when clicking outside
+document.addEventListener("click",(e)=>{
+
+    if(
+        !menu.contains(e.target)
+        &&
+        !menuBtn.contains(e.target)
+    ){
+
+        menu.classList.remove("active");
+
+        menuBtn.classList.remove("active");
+
+        document.body.style.overflow="auto";
+
+    }
+
+});
+
+// ESC Key
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key==="Escape"){
+
+        menu.classList.remove("active");
+
+        menuBtn.classList.remove("active");
+
+        document.body.style.overflow="auto";
+
+    }
+
+});
+
+// const menuBtn=document.querySelector(".menu-btn");
+
+// const menu=document.getElementById("menu");
+
+// menuBtn.onclick=()=>{
+
+// menu.classList.toggle("active");
+
+// }
